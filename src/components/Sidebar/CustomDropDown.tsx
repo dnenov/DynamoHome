@@ -2,7 +2,21 @@ import { useState, useRef, useEffect } from 'react';
 import styles from './CustomDropDown.module.css';
 import { OpenArrow } from '../Common/Arrow';
 
-export const CustomDropdown = ({ id, options, placeholder, onSelectionChange, className }: Dropdown & { className?: string }) => {
+export const CustomDropdown = ({
+    id,
+    options,
+    placeholder,
+    onSelectionChange,
+    className,
+    showDivider = true,
+    wholeButtonActionable = false,
+    disableArrowHoverShadow = false
+}: Dropdown & {
+    className?: string,
+    showDivider?: boolean,
+    wholeButtonActionable?: boolean,
+    disableArrowHoverShadow?: boolean
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [lastSelected, setLastSelected] = useState(options[0]);
     const dropdownRef = useRef(null);
@@ -43,14 +57,27 @@ export const CustomDropdown = ({ id, options, placeholder, onSelectionChange, cl
     }, [isOpen]);
 
     return (
-        <div className={`${styles['custom-dropdown']} ${isOpen ? styles.open : ''} ${className}`} ref={dropdownRef}>
-            <div className={styles['dropdown-selected']} onClick={handleDefaultAction}>
+        <div
+            className={`
+            ${styles['custom-dropdown']} 
+            ${isOpen ? styles.open : ''} 
+            ${disableArrowHoverShadow ? styles['no-hover-shadow'] : ''} 
+            ${className}
+            `}
+            ref={dropdownRef}>
+            <div
+                className={styles['dropdown-selected']}
+                onClick={wholeButtonActionable ? toggleDropdown : undefined}
+            >
                 <span>{placeholder}</span>
-                <span className={styles['vertical-line']}></span>
-                <div className={styles['arrow-container']} onClick={(e) => {
-                    e.stopPropagation();
-                    toggleDropdown();
-                }}>
+                {showDivider && <span className={styles['vertical-line']}></span>}
+                <div
+                    className={styles['arrow-container']}
+                    onClick={wholeButtonActionable ? undefined : (e) => {
+                        e.stopPropagation();
+                        toggleDropdown();
+                    }}
+                >
                     <OpenArrow isOpen={isOpen} color={arrowColor} />
                 </div>
             </div>

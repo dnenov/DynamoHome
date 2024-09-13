@@ -114,3 +114,7 @@
     background-color: #9B9B9B; 
     margin: 0px; 
 }
+
+.no-hover-shadow .arrow-container:hover {
+    box-shadow: none !important;
+}

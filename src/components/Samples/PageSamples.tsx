@@ -8,7 +8,7 @@ import { CustomSampleFirstCellRenderer } from "./CustomSampleFirstCellRenderer";
 import { SamplesGrid } from './SamplesGrid';
 import { openFile, showSamplesCommand, saveHomePageSettings } from '../../functions/utility';
 import { useSettings } from '../SettingsContext';
-import { CustomDropdown } from "../Sidebar/CustomDropDown";
+import { CustomDropdown } from '../Sidebar/CustomDropDown';
 import styles from './PageSamples.module.css';
 
 export const SamplesPage = ({ samplesViewMode }) => {
@@ -133,10 +133,13 @@ export const SamplesPage = ({ samplesViewMode }) => {
                         placeholder={<FormattedMessage id="samples.showsamples.text" />}
                         onSelectionChange={handleShowSamplesClick}
                         options={[
-                            { label: <FormattedMessage id="samples.showsamples.files.text" />, value: 'open-files' },
+                            { label: <FormattedMessage id="samples.showsamples.files.text" />, value: 'open-graphs' },
                             { label: <FormattedMessage id="samples.showsamples.datasets.text" />, value: 'open-datasets' }
                         ]}
                         className={styles.wideDropdown}
+                        showDivider={false}
+                        wholeButtonActionable={true}
+                        disableArrowHoverShadow={true}
                     />
                 </div>
             </div>

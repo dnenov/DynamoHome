@@ -48,7 +48,7 @@ export function showSamplesCommand(value: ShowSamplesCommand) {
   if (value === 'open-graphs' && window.chrome?.webview !== undefined) {
     window.chrome.webview.hostObjects.scriptObject.ShowSampleFilesInFolder();
   }
-  if (value == 'open-datasets' && window.chrome?.webview !== undefined) {
+  if (value === 'open-datasets' && window.chrome?.webview !== undefined) {
     window.chrome.webview.hostObjects.scriptObject.ShowSampleDatasetsInFolder();
   }
 }
