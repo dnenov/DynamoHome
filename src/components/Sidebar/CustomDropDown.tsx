@@ -78,9 +78,7 @@ export const CustomDropdown = ({
                         toggleDropdown(); // Arrow always toggles the dropdown
                     }}
                 >
-                    <div style={{ marginTop: 4 }}>
-                        <OpenArrow isOpen={isOpen} color={arrowColor} />
-                    </div>
+                    <OpenArrow isOpen={isOpen} color={arrowColor} />
                 </div>
             </div>
             <div className={`${styles['dropdown-options']} ${isOpen ? styles.open : ''}`}>
